@@ -3,7 +3,7 @@ const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
 const botonFuego = document.getElementById('boton-fuego')
 const botonAgua = document.getElementById('boton-agua')
- const botonTierra = document.getElementById('boton-tierra')
+const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
