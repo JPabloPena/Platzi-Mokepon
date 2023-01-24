@@ -7,9 +7,6 @@ const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 const mascotaEnemigo = document.getElementById('mascota-enemigo')
@@ -26,6 +23,9 @@ let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let opcionDeMokepones
+let inputHipodoge
+let inputCapipepo
+let inputRatigueya
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -72,6 +72,7 @@ mokepones.push(hipodoge, capipepo, ratigueya)
 
 function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
+    sectionReiniciar.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -82,9 +83,13 @@ function iniciarJuego() {
         </label>
         `
         contenedorTarjetas.innerHTML += opcionDeMokepones
+
     })
 
-    sectionReiniciar.style.display = 'none'
+    inputHipodoge = document.getElementById('Hipodoge')
+    inputCapipepo = document.getElementById('Capipepo')
+    inputRatigueya = document.getElementById('Ratigueya')
+
 
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
@@ -100,11 +105,11 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarAtaque.style.display = 'flex'
 
     if(inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = '¡HIPODOGE! 🔥'
+        spanMascotaJugador.innerHTML = inputHipodoge.id
     } else if(inputCapipepo.checked) {
-        spanMascotaJugador.innerHTML = '¡CAPIPEPO! 💧'
+        spanMascotaJugador.innerHTML = inputCapipepo.id
     } else if(inputRatigueya.checked) {
-        spanMascotaJugador.innerHTML = '¡RATIGUEYA! 🌿'
+        spanMascotaJugador.innerHTML = inputRatigueya.id
     } else {
         alert('¡No has elegido a ninguna mascota! 😥')
     }
@@ -113,15 +118,9 @@ function seleccionarMascotaJugador() {
 }
 
 function seleccionarMascotaEnemigo() {
-    let mascotaAleatoria = aleatorio(1,3)
+    let mascotaAleatoria = aleatorio(0, mokepones.length - 1)
 
-    if(mascotaAleatoria == 1) {
-        mascotaEnemigo.innerHTML = '¡HIPODOGE! 🔥'
-    } else if(mascotaAleatoria == 2) {
-        mascotaEnemigo.innerHTML = '¡CAPIPEPO! 💧'
-    } else if(mascotaAleatoria == 3) {
-        mascotaEnemigo.innerHTML = '¡RATIGUEYA! 🌿'
-    }
+    mascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
 }
 
 function ataqueFuego() {
