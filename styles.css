@@ -76,7 +76,6 @@ input:checked + label {
     border-radius: 20px;
     border-color: transparent;
     width: 100px;
-    color: white;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -101,18 +100,13 @@ input:checked + label {
     display: grid;
     grid-template-columns: 100px 100px;
     text-align: center;
+    color:white;
 }
 
-#vidas-jugador, #vidas-enemigo {
+#victorias-jugador, #victorias-enemigo {
     font-size: 32px;
     margin-bottom: 0;
 }
-
-/* .ataques-jugador, .ataques-enemigo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
 
 @media (max-width: 360px) {
     .tarjetas, .tarjetas-ataques {
