@@ -8,8 +8,8 @@ const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 const mascotaEnemigo = document.getElementById('mascota-enemigo')
 
-const spanVidasJugador = document.getElementById('vidas-jugador')
-const spanVidasEnemigo = document.getElementById('vidas-enemigo')
+const spanVictoriasJugador = document.getElementById('victorias-jugador')
+const spanVictoriasEnemigo = document.getElementById('victorias-enemigo')
 
 const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
@@ -28,6 +28,7 @@ let inputRatigueya
 let mascotaJugador
 let ataquesMokepon
 let ataquesMokeponEnemigo
+let ataquesElegidosEnemigo = []
 let botonFuego
 let botonAgua
 let botonTierra
@@ -155,17 +156,14 @@ function secuenciaAtaque() {
         boton.addEventListener('click', (e) => {
             if(e.target.textContent === '🔥') {
                 ataqueJugador.push('¡FUEGO! 🔥')
-                console.log(ataqueJugador)
                 boton.style.background = '#112f58'
                 boton.disabled = true
             } else if(e.target.textContent === '💧') {
                 ataqueJugador.push('¡AGUA! 💧')
-                console.log(ataqueJugador)
                 boton.style.background = '#112f58'
                 boton.disabled = true
             } else if(e.target.textContent === '🌿') {
                 ataqueJugador.push('¡TIERRA! 🌿')
-                console.log(ataqueJugador)
                 boton.style.background = '#112f58'
                 boton.disabled = true
             }
@@ -185,15 +183,19 @@ function seleccionarMascotaEnemigo() {
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1)
 
-    if(ataqueAleatorio === 0 || ataqueAleatorio === 1) {
-        ataqueEnemigo.push('¡FUEGO! 🔥')
-    } else if(ataqueAleatorio === 3 || ataqueAleatorio === 4) {
-        ataqueEnemigo.push('¡AGUA! 💧')
-    } else if(ataqueAleatorio === 2) {
-        ataqueEnemigo.push('¡TIERRA! 🌿')
+    if(!ataquesElegidosEnemigo.includes(ataqueAleatorio)) {
+        ataquesElegidosEnemigo.push(ataqueAleatorio)
+        if(ataquesMokeponEnemigo[ataqueAleatorio].nombre == '🔥') {
+            ataqueEnemigo.push('¡FUEGO! 🔥')
+        } else if(ataquesMokeponEnemigo[ataqueAleatorio].nombre == '💧') {
+            ataqueEnemigo.push('¡AGUA! 💧')
+        } else if(ataquesMokeponEnemigo[ataqueAleatorio].nombre == '🌿') {
+            ataqueEnemigo.push('¡TIERRA! 🌿')
+        }
+        iniciarCombate()
+    } else {
+        ataqueAleatorioEnemigo()
     }
-    console.log(ataqueEnemigo)
-    iniciarCombate()
 }
 
 function iniciarCombate() {
@@ -210,26 +212,25 @@ function indexAmbosJugadores(index) {
 function combate() {
 
     for(let i = 0; i < ataqueJugador.length; i++) {
-        console.log(ataqueJugador[i])
         if(ataqueJugador[i] === ataqueEnemigo[i]) {
             indexAmbosJugadores(i)
             crearMensaje("¡EMPATE!")
         } else if(ataqueJugador[i] === "¡FUEGO! 🔥" && ataqueEnemigo[i] == "¡TIERRA! 🌿") {
             indexAmbosJugadores(i)
             crearMensaje("¡GANASTE!")
-            spanVidasJugador.innerHTML = ++victoriasJugador
+            spanVictoriasJugador.innerHTML = ++victoriasJugador
         } else if (ataqueJugador[i] == "¡AGUA! 💧" && ataqueEnemigo[i] == "¡FUEGO! 🔥") {
             indexAmbosJugadores(i)
             crearMensaje("¡GANASTE!")
-            spanVidasJugador.innerHTML = ++victoriasJugador
+            spanVictoriasJugador.innerHTML = ++victoriasJugador
         } else if(ataqueJugador[i] == "¡TIERRA! 🌿" && ataqueEnemigo[i] == "¡AGUA! 💧") {
             indexAmbosJugadores(i)
             crearMensaje("¡GANASTE!")
-            spanVidasJugador.innerHTML = ++victoriasJugador
+            spanVictoriasJugador.innerHTML = ++victoriasJugador
         } else {
             indexAmbosJugadores(i)
             crearMensaje("¡PERDISTE!")
-            spanVidasEnemigo.innerHTML = ++victoriasEnemigo
+            spanVictoriasEnemigo.innerHTML = ++victoriasEnemigo
         }
     }
 

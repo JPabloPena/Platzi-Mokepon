@@ -103,7 +103,7 @@ input:checked + label {
     color:white;
 }
 
-#vidas-jugador, #vidas-enemigo {
+#victorias-jugador, #victorias-enemigo {
     font-size: 32px;
     margin-bottom: 0;
 }
