@@ -10,7 +10,7 @@ app.use(express.json()) // Permite post en formato JSON
 const jugadores = []
 
 class Jugador {
-    constructor(id) {
+    constructor (id) {
         this.id = id
     }
 
@@ -39,8 +39,6 @@ app.get("/unirse", (req, res) => {
 
     const jugador = new Jugador(id)
     jugadores.push(jugador)
-
-    // res.setHeader("Access-Control-Allow-Origin", "*")
 
     res.send(id)
 })
