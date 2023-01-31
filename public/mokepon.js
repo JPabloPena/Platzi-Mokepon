@@ -53,7 +53,7 @@ let alturaQueBuscamos
 let anchoDelMapa = window.innerWidth - 20
 const anchoMaximoDelMapa = 350
 
-if(anchoDelMapa > anchoMaximoDelMapa) {
+if (anchoDelMapa > anchoMaximoDelMapa) {
     anchoDelMapa = anchoMaximoDelMapa - 20
 }
 
@@ -63,7 +63,7 @@ mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
 
 class Mokepon {
-    constructor(nombre, foto, vida, fotoMapa, id = null) {
+    constructor (nombre, foto, vida, fotoMapa, id = null) {
         this.id = id
         this.nombre = nombre
         this.foto = foto
@@ -79,7 +79,7 @@ class Mokepon {
         this.velocidadY = 0
     }
 
-    pintarMokepon() {
+    pintarMokepon () {
         lienzo.drawImage(
             this.mapaFoto,
             this.x,
@@ -128,7 +128,7 @@ ratigueya.ataques.push(...RATIGUEYA_ATAQUES)
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 
-function iniciarJuego() {
+function iniciarJuego () {
     sectionSeleccionarAtaque.style.display = 'none'
     sectionReiniciar.style.display = 'none'
     sectionVerMapa.style.display = 'none'
@@ -142,13 +142,11 @@ function iniciarJuego() {
         </label>
         `
         contenedorTarjetas.innerHTML += opcionDeMokepones
-
     })
 
     inputHipodoge = document.getElementById('Hipodoge')
     inputCapipepo = document.getElementById('Capipepo')
     inputRatigueya = document.getElementById('Ratigueya')
-
 
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
@@ -157,7 +155,7 @@ function iniciarJuego() {
     unirseAlJuego()
 }
 
-function unirseAlJuego() {
+function unirseAlJuego () {
     fetch(`http://${MI_IP}:8080/unirse`)
         .then(function (res) {
             console.log(res)
@@ -171,14 +169,14 @@ function unirseAlJuego() {
         })
 }
 
-function seleccionarMascotaJugador() {
-    if(inputHipodoge.checked) {
+function seleccionarMascotaJugador () {
+    if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
         mascotaJugador = inputHipodoge.id
-    } else if(inputCapipepo.checked) {
+    } else if (inputCapipepo.checked) {
         spanMascotaJugador.innerHTML = inputCapipepo.id
         mascotaJugador = inputCapipepo.id
-    } else if(inputRatigueya.checked) {
+    } else if (inputRatigueya.checked) {
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
     } else {
@@ -207,7 +205,7 @@ function seleccionarMokepon (mascotaJugador) {
     })
 }
 
-function extraerAtaques(mascotaJugador) {
+function extraerAtaques (mascotaJugador) {
     let ataques
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador === mokepones[i].nombre) {
@@ -218,7 +216,7 @@ function extraerAtaques(mascotaJugador) {
     mostrarAtaques(ataques)
 }
 
-function mostrarAtaques(ataques) {
+function mostrarAtaques (ataques) {
     ataques.forEach((ataque) => {
         ataquesMokepon =`
         <button id=${ataque.id} class="boton-de-ataque BAtaque">${ataque.nombre}</button>
@@ -232,18 +230,18 @@ function mostrarAtaques(ataques) {
     botones = document.querySelectorAll('.BAtaque')
 }
 
-function secuenciaAtaque() {
+function secuenciaAtaque () {
     botones.forEach((boton) => {
         boton.addEventListener('click', (e) => {
-            if(e.target.textContent === '🔥') {
+            if (e.target.textContent === '🔥') {
                 ataqueJugador.push('¡FUEGO! 🔥')
                 boton.style.background = '#112f58'
                 boton.disabled = true
-            } else if(e.target.textContent === '💧') {
+            } else if (e.target.textContent === '💧') {
                 ataqueJugador.push('¡AGUA! 💧')
                 boton.style.background = '#112f58'
                 boton.disabled = true
-            } else if(e.target.textContent === '🌿') {
+            } else if (e.target.textContent === '🌿') {
                 ataqueJugador.push('¡TIERRA! 🌿')
                 boton.style.background = '#112f58'
                 boton.disabled = true
@@ -255,7 +253,7 @@ function secuenciaAtaque() {
     })
 }
 
-function enviarAtaques() {
+function enviarAtaques () {
     fetch(`http://${MI_IP}:8080/mokepon/${jugadorId}/ataques`, {
         method: 'post',
         headers: {
@@ -284,22 +282,22 @@ function obtenerAtaques () {
         })
 }
 
-function seleccionarMascotaEnemigo(enemigo) {
+function seleccionarMascotaEnemigo (enemigo) {
     mascotaEnemigo.innerHTML = enemigo.nombre
     ataquesMokeponEnemigo = enemigo.ataques
     secuenciaAtaque()
 }
 
-function ataqueAleatorioEnemigo() {
+function ataqueAleatorioEnemigo () {
     let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1)
 
-    if(!ataquesElegidosEnemigo.includes(ataqueAleatorio)) {
+    if (!ataquesElegidosEnemigo.includes(ataqueAleatorio)) {
         ataquesElegidosEnemigo.push(ataqueAleatorio)
-        if(ataquesMokeponEnemigo[ataqueAleatorio].nombre == '🔥') {
+        if (ataquesMokeponEnemigo[ataqueAleatorio].nombre == '🔥') {
             ataqueEnemigo.push('¡FUEGO! 🔥')
-        } else if(ataquesMokeponEnemigo[ataqueAleatorio].nombre == '💧') {
+        } else if (ataquesMokeponEnemigo[ataqueAleatorio].nombre == '💧') {
             ataqueEnemigo.push('¡AGUA! 💧')
-        } else if(ataquesMokeponEnemigo[ataqueAleatorio].nombre == '🌿') {
+        } else if (ataquesMokeponEnemigo[ataqueAleatorio].nombre == '🌿') {
             ataqueEnemigo.push('¡TIERRA! 🌿')
         }
         iniciarCombate()
@@ -308,25 +306,25 @@ function ataqueAleatorioEnemigo() {
     }
 }
 
-function iniciarCombate() {
+function iniciarCombate () {
     if(ataqueJugador.length == 5) {
         combate()
     }
 }
 
-function indexAmbosJugadores(index) {
+function indexAmbosJugadores (index) {
     indexAtaqueJugador = ataqueJugador[index]
     indexAtaqueEnemigo = ataqueEnemigo[index]
 }
 
-function combate() {
+function combate () {
     clearInterval(intervalo)
 
-    for(let i = 0; i < ataqueJugador.length; i++) {
-        if(ataqueJugador[i] === ataqueEnemigo[i]) {
+    for (let i = 0; i < ataqueJugador.length; i++) {
+        if (ataqueJugador[i] === ataqueEnemigo[i]) {
             indexAmbosJugadores(i)
             crearMensaje("¡EMPATE!")
-        } else if(ataqueJugador[i] === "¡FUEGO! 🔥" && ataqueEnemigo[i] == "¡TIERRA! 🌿") {
+        } else if (ataqueJugador[i] === "¡FUEGO! 🔥" && ataqueEnemigo[i] == "¡TIERRA! 🌿") {
             indexAmbosJugadores(i)
             crearMensaje("¡GANASTE!")
             spanVictoriasJugador.innerHTML = ++victoriasJugador
@@ -334,7 +332,7 @@ function combate() {
             indexAmbosJugadores(i)
             crearMensaje("¡GANASTE!")
             spanVictoriasJugador.innerHTML = ++victoriasJugador
-        } else if(ataqueJugador[i] == "¡TIERRA! 🌿" && ataqueEnemigo[i] == "¡AGUA! 💧") {
+        } else if (ataqueJugador[i] == "¡TIERRA! 🌿" && ataqueEnemigo[i] == "¡AGUA! 💧") {
             indexAmbosJugadores(i)
             crearMensaje("¡GANASTE!")
             spanVictoriasJugador.innerHTML = ++victoriasJugador
@@ -348,17 +346,17 @@ function combate() {
     revisarVictorias()
 }
 
-function revisarVictorias() {
-    if(victoriasJugador > victoriasEnemigo) {
+function revisarVictorias () {
+    if (victoriasJugador > victoriasEnemigo) {
         crearMensajeFinal('Felicitaciones... ¡GANASTE! 🥳')
-    } else if(victoriasJugador < victoriasEnemigo) {
+    } else if (victoriasJugador < victoriasEnemigo) {
         crearMensajeFinal('Lo siento... ¡PERDISTE! 😥')
     } else {
         crearMensajeFinal('Es un... ¡EMPATE! 😯')
     }
 }
 
-function crearMensaje(resultado) {
+function crearMensaje (resultado) {
     let nuevoAtaqueDelJugador = document.createElement('p')
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
@@ -370,22 +368,21 @@ function crearMensaje(resultado) {
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
-function crearMensajeFinal(resultadoFinal) {
+function crearMensajeFinal (resultadoFinal) {
     sectionMensajes.innerHTML = resultadoFinal
 
     sectionReiniciar.style.display = 'block'
 }
 
-function reiniciarJuego() {
+function reiniciarJuego () {
     location.reload()
 }
 
-// Retorna un número aleatorio
-function aleatorio(min, max) {
+function aleatorio (min, max) {
     return Math.floor(Math.random() * (max-min+1) + min)
 }
 
-function pintarCanvas() {
+function pintarCanvas () {
     mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
     mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
@@ -443,29 +440,29 @@ function enviarPosicion (x, y) {
         })
 }
 
-function moverArriba() {
+function moverArriba () {
     mascotaJugadorObjeto.velocidadY = -5
 }
 
-function moverDerecha() {
+function moverDerecha () {
     mascotaJugadorObjeto.velocidadX = 5
 }
 
-function moverAbajo() {
+function moverAbajo () {
     mascotaJugadorObjeto.velocidadY = 5
 }
 
-function moverIzquierda() {
+function moverIzquierda () {
     mascotaJugadorObjeto.velocidadX = -5
 }
 
-function detenerMovimiento() {
+function detenerMovimiento () {
     mascotaJugadorObjeto.velocidadX = 0
     mascotaJugadorObjeto.velocidadY = 0
 }
 
-function sePresionoUnaTecla(event) {
-    switch(event.key) {
+function sePresionoUnaTecla (event) {
+    switch (event.key) {
         case 'ArrowUp':
             moverArriba()
             break
@@ -483,14 +480,14 @@ function sePresionoUnaTecla(event) {
     }
 }
 
-function iniciarMapa() {
+function iniciarMapa () {
     mascotaJugadorObjeto = obtenerObjetoMascota()
     intervalo = setInterval(pintarCanvas, 50)
     window.addEventListener('keydown', sePresionoUnaTecla)
     window.addEventListener('keyup', detenerMovimiento)
 }
 
-function obtenerObjetoMascota() {
+function obtenerObjetoMascota () {
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador === mokepones[i].nombre) {
             return mokepones[i]
@@ -498,7 +495,7 @@ function obtenerObjetoMascota() {
     }
 }
 
-function revisarColision(enemigo) {
+function revisarColision (enemigo) {
     const arribaEnemigo = enemigo.y
     const abajoEnemigo = enemigo.y + enemigo.alto
     const derechaEnemigo = enemigo.x + enemigo.ancho
