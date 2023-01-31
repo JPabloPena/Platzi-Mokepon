@@ -401,10 +401,8 @@ function pintarCanvas() {
     enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
 
     mokeponesEnemigos.forEach(function (mokepon) {
-        if (mokepon != undefined) {
-            mokepon.pintarMokepon()
-            revisarColision(mokepon)
-        }
+        mokepon.pintarMokepon()
+        revisarColision(mokepon)
     })
 }
 
@@ -425,21 +423,19 @@ function enviarPosicion (x, y) {
                 .then(function ({ enemigos }) {
                     console.log(enemigos)
                     mokeponesEnemigos = enemigos.map(function (enemigo) {
-                        let mokeponEnemigo =  null
-                        if (enemigos.mokepon != undefined) {
-                            const mokeponNombre = enemigo.mokepon.nombre || ""
-                            console.log({mokeponNombre})
-                            if (mokeponNombre === 'Hipodoge') {
-                                mokeponEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './assets/hipodoge.png', enemigo.id)
-                            } else if (mokeponNombre === 'Capipepo') {
-                                mokeponEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5, './assets/capipepo.png', enemigo.id)
-                            } else if (mokeponNombre === 'Ratigueya') {
-                                mokeponEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './assets/ratigueya.png', enemigo.id)
-                            }
-
-                            mokeponEnemigo.x = enemigo.x
-                            mokeponEnemigo.y = enemigo.y
+                    let mokeponEnemigo =  null
+                        const mokeponNombre = enemigo.mokepon.nombre || ""
+                        if (mokeponNombre === 'Hipodoge') {
+                            mokeponEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './assets/hipodoge.png', enemigo.id)
+                        } else if (mokeponNombre === 'Capipepo') {
+                            mokeponEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5, './assets/capipepo.png', enemigo.id)
+                        } else if (mokeponNombre === 'Ratigueya') {
+                            mokeponEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './assets/ratigueya.png', enemigo.id)
                         }
+
+                        mokeponEnemigo.x = enemigo.x
+                        mokeponEnemigo.y = enemigo.y
+
                         return mokeponEnemigo
                     })
                 })
