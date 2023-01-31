@@ -22,11 +22,11 @@
         <section id="ver-mapa">
             <h2 class="subtitulo">Recorre el mapa con tu Mokepon</h2>
             <canvas id="mapa"></canvas>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</button>
+            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()" ontouchstart="moverArriba()" ontouchend="detenerMovimiento()">⬆️</button>
             <div>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()" ontouchstart="moverIzquierda()" ontouchend="detenerMovimiento()">⬅️</button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()" ontouchstart="moverAbajo()" ontouchend="detenerMovimiento()">⬇️</button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()" ontouchstart="moverDerecha()" ontouchend="detenerMovimiento()">➡️</button>
             </div>
         </section>
 
@@ -59,6 +59,6 @@
                 </div>
             </div>
         </section>
-        <script src="./js/mokepon.js"></script>
+        <script src="./mokepon.js"></script>
     </body>
 </html>

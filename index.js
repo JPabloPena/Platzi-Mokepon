@@ -3,6 +3,7 @@ const cors = require("cors")
 const { application } = require("express")
 
 const app = express()
+app.use(express.static('public'))
 app.use(cors()) // Access-Control-Allow-Origin
 app.use(express.json()) // Permite post en formato JSON
 
