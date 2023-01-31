@@ -127,6 +127,7 @@ input:checked + label {
     color: white;
     font-family: 'Poppins', sans-serif;
     margin: 5px;
+    user-select: none;
 }
 
 @media (max-width: 570px) {
