@@ -427,8 +427,8 @@ function enviarPosicion (x, y) {
                             mokeponEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './assets/ratigueya.png', enemigo.id)
                         }
 
-                        mokeponEnemigo.x = enemigo.x
-                        mokeponEnemigo.y = enemigo.y
+                        mokeponEnemigo.x = enemigo.x || 0
+                        mokeponEnemigo.y = enemigo.y || 0
 
                         return mokeponEnemigo
                     })
