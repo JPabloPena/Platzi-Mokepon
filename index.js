@@ -7,7 +7,7 @@ app.use(express.static('public'))
 app.use(cors()) // Access-Control-Allow-Origin
 app.use(express.json()) // Permite post en formato JSON
 
-const jugadores = []
+let jugadores = []
 
 class Jugador {
     constructor (id) {
@@ -38,8 +38,13 @@ app.get("/unirse", (req, res) => {
     const id = `${Math.random()}`
 
     const jugador = new Jugador(id)
-    jugadores.push(jugador)
 
+    if (jugadores.length === 2) {
+        jugadores.shift()
+    }
+
+    jugadores.push(jugador)
+    console.log("Jugador creado: " + id)
     res.send(id)
 })
 
@@ -98,6 +103,6 @@ app.get("/mokepon/:jugadorId/ataques", (req, res) => {
     })
 })
 
-app.listen(8080, () => {
+let server = app.listen(8080, () => {
     console.log("Servidor funcionando!")
 })

@@ -158,11 +158,9 @@ function iniciarJuego () {
 function unirseAlJuego () {
     fetch(`http://${MI_IP}:8080/unirse`)
         .then(function (res) {
-            console.log(res)
             if(res.ok) {
                 res.text()
                     .then(function (respuesta) {
-                        console.log(respuesta)
                         jugadorId = respuesta
                     })
             }
@@ -418,7 +416,6 @@ function enviarPosicion (x, y) {
             if (res.ok) {
                 res.json()
                 .then(function ({ enemigos }) {
-                    console.log(enemigos)
                     mokeponesEnemigos = enemigos.map(function (enemigo) {
                     let mokeponEnemigo =  null
                         const mokeponNombre = enemigo.mokepon.nombre || ""
