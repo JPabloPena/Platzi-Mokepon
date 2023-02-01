@@ -22,11 +22,19 @@
         <section id="ver-mapa">
             <h2 class="subtitulo">Recorre el mapa con tu Mokepon</h2>
             <canvas id="mapa"></canvas>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()" ontouchstart="moverArriba()" ontouchend="detenerMovimiento()">⬆️</button>
+            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()" ontouchstart="moverArriba()" ontouchend="detenerMovimiento()">
+                <img id="flecha-arriba" src = "./assets/flecha.svg" />
+            </button>
             <div>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()" ontouchstart="moverIzquierda()" ontouchend="detenerMovimiento()">⬅️</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()" ontouchstart="moverAbajo()" ontouchend="detenerMovimiento()">⬇️</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()" ontouchstart="moverDerecha()" ontouchend="detenerMovimiento()">➡️</button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()" ontouchstart="moverIzquierda()" ontouchend="detenerMovimiento()">
+                    <img id="flecha-izquierda" src = "./assets/flecha.svg" />
+                </button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()" ontouchstart="moverAbajo()" ontouchend="detenerMovimiento()">
+                    <img id="flecha-abajo" src = "./assets/flecha.svg" />
+                </button>
+                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()" ontouchstart="moverDerecha()" ontouchend="detenerMovimiento()">
+                    <img id="flecha-derecha" src = "./assets/flecha.svg" />
+                </button>
             </div>
         </section>
 
