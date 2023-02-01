@@ -103,6 +103,6 @@ app.get("/mokepon/:jugadorId/ataques", (req, res) => {
     })
 })
 
-let server = app.listen(8080, () => {
+app.listen(8080, () => {
     console.log("Servidor funcionando!")
 })
