@@ -39,6 +39,13 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-de-mokepon:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px #888888;
 }
 
 .tarjeta-de-mokepon img {
@@ -54,6 +61,13 @@ body {
     color: white;
     font-family: 'Poppins', sans-serif;
     margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+#boton-mascota:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px #888888;
 }
 
 input {
@@ -79,6 +93,21 @@ input:checked + label {
     font-family: 'Poppins', sans-serif;
 }
 
+#boton-fuego:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #ffb02e;
+}
+
+#boton-agua:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #26c9fc;
+}
+
+#boton-tierra:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #86d72f;
+}
+
 #mensajes {
     width: 280px;
     background-color: #205295;
@@ -90,10 +119,23 @@ input:checked + label {
     flex-direction: column;
 }
 
+#resultado {
+    color: white;
+}
+
 #boton-reiniciar {
     border: none;
     color: #144272;
     font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    padding: 5px 50px;
+}
+
+#boton-reiniciar:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px #888888;
 }
 
 .ataques {
@@ -128,6 +170,28 @@ input:checked + label {
     font-family: 'Poppins', sans-serif;
     margin: 5px;
     user-select: none;
+}
+
+#ver-mapa button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #888888;
+}
+
+#flecha-arriba, #flecha-derecha, #flecha-izquierda, #flecha-abajo {
+    vertical-align: middle;
+    height: 20px;
+}
+
+#flecha-arriba {
+    transform: rotate(270deg);
+}
+
+#flecha-izquierda {
+    transform: rotate(180deg);
+}
+
+#flecha-abajo {
+    transform: rotate(90deg);
 }
 
 @media (max-width: 570px) {
